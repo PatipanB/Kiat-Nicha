@@ -1,0 +1,564 @@
+<!-- Content Header (Page header) -->
+<%- include("partials/header") %>
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1 id="productHeader"><%= list[0].productName %></h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#">Tables</a></li>
+			<li class="active">Products tables</li>
+		</ol>
+	</section>
+
+	<section class="content">	
+		<div class="row">
+			<div class="col-xs-6">
+				<!-- BAR CHART -->
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">ปัญหาของลูกค้า</h3>
+						<div class="box-tools pull-right">
+							<select id="show_row"> 
+								<option value="-1">ทั้งหมด</option> 
+								<option value="5">5</option> 
+								<option value="10" selected="">10</option> 
+								<option value="20">20</option> 
+								<option value="50">50</option> 
+							</select>
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body border-radius-none">
+						<div class="chart">
+							<canvas id="barChart" height="200"></canvas>
+						</div>
+					</div>
+				<!-- /.box-body -->
+				</div>
+			<!-- /.box -->
+			</div>
+			<div class="col-xs-6">
+				<!-- LINE CHART -->
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Line Chart</h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-default" id="daterange-btn1" name="daterange-btn">
+								<i class="fa fa-calendar"></i>
+								<span></span>
+							</button>
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+							</button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="chart">
+							<canvas id="lineChart" height="200"></canvas>
+						</div>
+					</div>
+				<!-- /.box-body -->
+				</div>
+			<!-- /.box -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<!-- DONUT CHART -->
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Donut Chart</h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<canvas id="pieChart" height="200"></canvas>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+			<div class="col-xs-6">
+				<!-- DONUT CHART -->
+				<div class="box">
+					<div class="box-header with-border">
+						<h3 class="box-title">Donut Chart 2</h3>
+						<div class="box-tools pull-right">
+							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+							<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<canvas id="pieChart2" height="200"></canvas>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<!-- .box-header -->
+					<div class="box-header">
+						<h3 class="box-title"> Table</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- .box-body --> 
+					<div class="box-body">
+						<div class="row">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<div class="col-md-3">
+									<p>จำนวนแถวที่แสดง</p>
+									<select class="form-control" id="show_row"> 
+										<option value="-1">ทั้งหมด</option> 
+										<option value="5">5</option> 
+										<option value="10" selected="">10</option> 
+										<option value="20">20</option> 
+										<option value="50">50</option> 
+									</select>
+								</div>
+								<div class="col-md-3">
+									<p>ชื่อสินค้า</p>
+									<select class="form-control" id="show_row"> 
+										<option value="-1" selected="">ทั้งหมด</option> 
+										<option value="5">เซรั่ม</option> 
+										<option value="10">ครีมบำรุงผิว</option> 
+										<option value="20">น้ำตบ</option> 
+										<option value="50">น้ำหอม</option> 
+									</select>
+								</div>
+								<div class="col-md-3">
+									<p>วันที่ได้รับสินค้า</p>
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker1'>
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type='text' class="form-control" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<p>tracking number</p>
+									<input class="form-control" id="po_code" type="text" placeholder="เลขใบสั่งซื้อ" 
+									onkeypress=" if (event.keyCode === 13) { $('#segment_now').val(0); Track_po_master(); } ">
+								</div>
+							</div>
+						  </div>
+						</div>
+						<table id="example2" class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>Customer name</th>
+									<th>Barcode</th>
+									<th>Status</th>
+									<th>Deliver date</th>
+									<th>Remark</th>
+									<th>Amount</th>
+									<th>Admin</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--forEach-->
+								<% list[2].forEach(function(customer){ %>
+									<tr>
+										<td> <%= customer.customerName %> </td>
+										<td> <%= customer.barcode %> </td>
+										<td> <%= customer.status %> </td>
+										<td> <%= customer.deliverDate %> </td>
+										<td> <%= customer.remark %> </td>
+										<td> <%= customer.amount %> </td>
+										<td> <%= customer.admin %> </td>
+									</tr>
+								<% }) %>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<p id="remarksLabels" style="display:none;">
+			<% list[1].forEach(function(x){ %> <%- x.labels + ',' %> <% }) %>
+		</p>
+		<p id="remarksDatas" style="display:none;">
+			<% list[1].forEach(function(x){ %> <%- x.count + ',' %> <% }) %>
+		</p>
+		<p id="dateLabels" style="display:none;"> 
+			<% for(x in list[3]) { %> <%- x + ',' %> <% } %>
+		</p>
+		<p id="AmountDatas" style="display:none;">
+			<%  for(x in list[3]) { %> <%- list[3][x] + ',' %> <% } %>
+		</p>
+		<p id="amount" style="display:none;">
+			<% for(x in list[4]) { %> <%- x + ',' %> <% } %>
+		</p>
+		<p id="numOfAmount" style="display:none;">
+			<%  for(x in list[4]) { %> <%- list[4][x] + ',' %> <% } %>
+		</p>
+	  <!-- /.row -->
+	</section>
+	<!-- /.content -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/moment/min/moment.min.js"></script>
+	<script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="/node_modules/chart.js/dist/Chart.js"></script>
+	<script> 
+		
+		
+		var f = $("#remarksLabels").text();
+		var importedLabels = f.split(',').slice(0, f.split(',').length-1); // labels
+
+		var x = $("#remarksDatas").text();
+		var importedDatas = x.split(',').slice(0, x.split(',').length-1);// data
+
+		var t = $("#dateLabels").text();
+		var importeddateLabels = t.split(',').slice(0, t.split(',').length-1);
+
+		var d = $("#AmountDatas").text();
+		var importedAmountDatas = d.split(',').slice(0, d.split(',').length-1);
+
+		var a = $("#amount").text();
+		var importedAmount = a.split(',').slice(0, a.split(',').length-1);
+
+		var na =$("#numOfAmount").text();
+		var importedNumOfAmount = na.split(',').slice(0,na.split(',').length-1);
+
+		$( "#show_row" ).change(function() {
+			barChartData.data.labels = importedLabels.slice(0,$("#show_row").val()); 
+			barChartData.data.datasets[0].data = importedDatas.slice(0,$("#show_row").val());
+			barChart.update();
+		});
+
+		var lineChartData = {
+			type: 'line',
+			data: {
+				labels: importeddateLabels,
+				datasets: [{
+					label: "ยอดขาย",
+					fill: false,
+					data: importedAmountDatas,
+					backgroundColor: 'rgb(108, 160, 220)',
+					borderColor: 'rgb(108, 160, 220)',
+					borderWidth: 3
+				},
+					{
+					label: "ค่าแอด",
+					fill: false,
+					data: [5000,5000,5000,5000,5000],
+					backgroundColor: 'rgb(255, 105, 97)',
+					borderColor: 'rgb(255, 105, 97)',
+					borderWidth: 3
+				},{
+					label: "กำไร",
+					fill: false,
+					data: [1000,1000,1000,1000,1000],
+					backgroundColor: 'rgb(119, 221, 119)',
+					borderColor: 'rgb(119, 221, 119)',
+					borderWidth: 3
+				}
+						  ]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		}
+
+		var ctx = document.getElementById('lineChart');
+		var lineChart = new Chart(ctx, lineChartData);
+
+		var barChartData = {
+			type: 'horizontalBar',
+			data: {
+				labels: importedLabels.slice(0,$("#show_row").val()),
+				datasets: [{
+					label: false,
+					data: importedDatas.slice(0,$("#show_row").val()),
+					backgroundColor: makeColor(importedDatas.length,"shade"),
+					bordeColor: makeColor(importedDatas.length,"shade"),
+					borderWidth: 1,
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						position: 'top',
+						ticks: {
+							beginAtZero: true,
+							minRotation: 0
+						},
+						offsetGridLines: false,
+					}]
+				},
+				legend: {
+					display: false
+				}
+			}
+		}
+
+		var ctx = document.getElementById('barChart');
+		var barChart = new Chart(ctx, barChartData);
+
+		var colorForPieCahrt = makeColor(importedAmount.length,"colorful");
+		var pieChartData = {
+			type: 'pie',
+			data: {
+				labels: importedAmount,
+				datasets: [{
+					label: '# of Votes',
+					data: importedNumOfAmount,
+					backgroundColor: colorForPieCahrt,
+					bordeColor:colorForPieCahrt,
+					borderWidth: 1
+				}]
+			},
+			options: {
+			}
+		}
+
+		// function arrayToRGB(codeColor) {
+		// 	return 'rgb(' + codeColor[0] + ', '  + codeColor[0] + ', '  + codeColor[0] + ')';
+		// }
+
+		function makeColor(n,type) {
+
+			switch(type) {
+				case "shade":
+					var colors = [];
+					for(var i = 0; i < n; i++) {
+						colors.push('rgba(' + (255 - (i*10)).toString() + ', 99, 132, 1)');
+					}
+					return colors;
+					break;
+				case "colorful":
+					var tempColors = ['rgb(55, 123, 43)', 'rgb(88, 80, 141)', 'rgb(188, 80, 144)', 'rgb(255, 99, 97)', 'rgb(255, 166, 0)', 'rgb(244, 122, 31)'];
+					var colors =[]
+					for(var i = 0; i < n; i++) {
+						colors.push(tempColors[i%tempColors.length]);
+					}
+					return colors;
+					break;
+				default:
+					// code block
+			}
+		}
+
+		var ctx = document.getElementById('pieChart');
+		var pieChart = new Chart(ctx, pieChartData);
+
+		$('#daterange-btn').daterangepicker(
+			 {
+				ranges   : {
+					'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+					'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+					'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+					'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+				},
+				startDate: moment().subtract(29, 'days'),
+				endDate  : moment()
+			},
+			function (start, end) {
+				$('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+			}
+		)
+
+	$("#daterange-btn1").daterangepicker(
+			{
+				 ranges   : {
+				 'Today'       : [moment(), moment()],
+				 'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+				 'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+				 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+				 'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+				 'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+				},
+			 	startDate: moment().subtract(29, 'days'),
+			 	endDate  : moment()
+			 	},
+			 	function (start, end) {
+			 		$('#daterange-btn1 span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+			 	}
+			 );
+		+function ($){
+	  'use strict';
+
+	  var DataKey = 'lte.boxwidget';
+
+	  var Default = {
+		animationSpeed : 500,
+		collapseTrigger: '[data-widget="collapse"]',
+		removeTrigger  : '[data-widget="remove"]',
+		collapseIcon   : 'fa-minus',
+		expandIcon     : 'fa-plus',
+		removeIcon     : 'fa-times'
+	  };
+
+	  var Selector = {
+		data     : '.box',
+		collapsed: '.collapsed-box',
+		header   : '.box-header',
+		body     : '.box-body',
+		footer   : '.box-footer',
+		tools    : '.box-tools'
+	  };
+
+	  var ClassName = {
+		collapsed: 'collapsed-box'
+	  };
+
+	  var Event = {
+			collapsing: 'collapsing.boxwidget',
+			collapsed: 'collapsed.boxwidget',
+			expanding: 'expanding.boxwidget',
+			expanded: 'expanded.boxwidget',
+			removing: 'removing.boxwidget',
+			removed: 'removed.boxwidget'        
+		};
+
+	  // BoxWidget Class Definition
+	  // =====================
+	  var BoxWidget = function (element, options) {
+		this.element = element;
+		this.options = options;
+
+		this._setUpListeners();
+	  };
+
+	  BoxWidget.prototype.toggle = function () {
+		var isOpen = !$(this.element).is(Selector.collapsed);
+
+		if (isOpen) {
+		  this.collapse();
+		} else {
+		  this.expand();
+		}
+	  };
+
+	  BoxWidget.prototype.expand = function () {
+		var expandedEvent = $.Event(Event.expanded);
+		var expandingEvent = $.Event(Event.expanding);
+		var collapseIcon  = this.options.collapseIcon;
+		var expandIcon    = this.options.expandIcon;
+
+		$(this.element).removeClass(ClassName.collapsed);
+
+		$(this.element)
+		  .children(Selector.header + ', ' + Selector.body + ', ' + Selector.footer)
+		  .children(Selector.tools)
+		  .find('.' + expandIcon)
+		  .removeClass(expandIcon)
+		  .addClass(collapseIcon);
+
+		$(this.element).children(Selector.body + ', ' + Selector.footer)
+		  .slideDown(this.options.animationSpeed, function () {
+			$(this.element).trigger(expandedEvent);
+		  }.bind(this))
+		  .trigger(expandingEvent);
+	  };
+
+	  BoxWidget.prototype.collapse = function () {
+		var collapsedEvent = $.Event(Event.collapsed);
+		var collapsingEvent = $.Event(Event.collapsing);
+		var collapseIcon   = this.options.collapseIcon;
+		var expandIcon     = this.options.expandIcon;
+
+		$(this.element)
+		  .children(Selector.header + ', ' + Selector.body + ', ' + Selector.footer)
+		  .children(Selector.tools)
+		  .find('.' + collapseIcon)
+		  .removeClass(collapseIcon)
+		  .addClass(expandIcon);
+
+		$(this.element).children(Selector.body + ', ' + Selector.footer)
+		  .slideUp(this.options.animationSpeed, function () {
+			$(this.element).addClass(ClassName.collapsed);
+			$(this.element).trigger(collapsedEvent);
+		  }.bind(this))
+		  .trigger(collapsingEvent);
+	  };
+
+	  BoxWidget.prototype.remove = function () {
+		var removedEvent = $.Event(Event.removed);
+		var removingEvent = $.Event(Event.removing);
+
+		$(this.element).slideUp(this.options.animationSpeed, function () {
+		  $(this.element).trigger(removedEvent);
+		  $(this.element).remove();
+		}.bind(this))
+		.trigger(removingEvent);
+	  };
+
+	  // Private
+
+	  BoxWidget.prototype._setUpListeners = function () {
+		var that = this;
+
+		$(this.element).on('click', this.options.collapseTrigger, function (event) {
+		  if (event) event.preventDefault();
+		  that.toggle($(this));
+		  return false;
+		});
+
+		$(this.element).on('click', this.options.removeTrigger, function (event) {
+		  if (event) event.preventDefault();
+		  that.remove($(this));
+		  return false;
+		});
+	  };
+
+	  // Plugin Definition
+	  // =================
+	  function Plugin(option) {
+		return this.each(function () {
+		  var $this = $(this);
+		  var data  = $this.data(DataKey);
+
+		  if (!data) {
+			var options = $.extend({}, Default, $this.data(), typeof option == 'object' && option);
+			$this.data(DataKey, (data = new BoxWidget($this, options)));
+		  }
+
+		  if (typeof option == 'string') {
+			if (typeof data[option] == 'undefined') {
+			  throw new Error('No method named ' + option);
+			}
+			data[option]();
+		  }
+		});
+	  }
+
+	  var old = $.fn.boxWidget;
+
+	  $.fn.boxWidget             = Plugin;
+	  $.fn.boxWidget.Constructor = BoxWidget;
+
+	  // No Conflict Mode
+	  // ================
+	  $.fn.boxWidget.noConflict = function () {
+		$.fn.boxWidget = old;
+		return this;
+	  };
+
+	  // BoxWidget Data API
+	  // ==================
+	$(Selector.data).each(function () {
+		Plugin.call($(this));
+	  });
+		}(jQuery);
+	</script>
+</div>
+<%- include("partials/footer") %>

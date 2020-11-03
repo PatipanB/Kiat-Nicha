@@ -1,0 +1,97 @@
+<%- include("partials/header") %>
+<!-- Content Header (Page header) -->
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			Products Tables
+			<small>advanced tables</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#">Tables</a></li>
+			<li class="active">Products tables</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<!-- .box-header -->
+					<div class="box-header">
+						<h3 class="box-title">Products Data Table</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- .box-body --> 
+					<div class="box-body">
+						<div class="row">
+							<div class="form-group">
+								<div class="col-xs-12">
+									<div class="col-md-3">
+										<p>จำนวนแถวที่แสดง</p>
+										<select class="form-control" id="show_row"> 
+											<option value="-1">ทั้งหมด</option> 
+											<option value="5">5</option> 
+											<option value="10" selected="">10</option> 
+											<option value="20">20</option> 
+											<option value="50">50</option> 
+										</select>
+									</div>
+									<div class="col-md-3">
+										<p>ชื่อสินค้า</p>
+										<select class="form-control" id="show_row"> 
+											<option value="-1" selected="">ทั้งหมด</option> 
+											<option value="5">เซรั่ม</option> 
+											<option value="10">ครีมบำรุงผิว</option> 
+											<option value="20">น้ำตบ</option> 
+											<option value="50">น้ำหอม</option> 
+										</select>
+									</div>
+									<div class="col-md-3">
+										<p>วันที่ได้รับสินค้า</p>
+										<div class="form-group">
+											<div class='input-group date' id='datetimepicker1'>
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input type='text' class="form-control" />
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<p>tracking number</p>
+										<input class="form-control" id="po_code" type="text" placeholder="เลขใบสั่งซื้อ" 
+										onkeypress=" if (event.keyCode === 13) { $('#segment_now').val(0); Track_po_master(); } ">
+									</div>
+								</div>
+							</div>
+						</div>
+						<table id="example2" class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>ProductName</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!--forEach-->
+								<% products.forEach(function(p){ %>
+									<tr>
+										<td class="showProducts" name="<%= p.productName %>"><a href="/products/<%= p.productName %>" > <%= p.productName %> </a></td>
+										<td>-</td>
+									</tr>
+								<% }) %>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+			</div>
+			<!-- /.col -->
+		</div>
+		<!-- /.row -->
+	</section>
+</div>
+<!-- /.content -->
+<%- include("partials/footer") %>

@@ -1,0 +1,62 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+	<div class="ui large header"><i class="tag icon"></i> Order <%= order.customerName %></div>
+	<div class=" ui horizontal divider">Details</div>
+	
+	<table class="ui definition table">
+		<tbody>
+			<tr>
+			  <td class="four wide column">Product Name</td>
+			  <td><%= order.productName %></td>
+			</tr>
+			<tr>
+			  <td>Track Number</td>
+			  <td><%= order.barcode %></td>
+			</tr>
+			<tr>
+			  <td>Status</td>
+			  <td><%= order.status %></td>
+			</tr>
+			<tr>
+			  <td>Province</td>
+			  <td><%= order.province %></td>
+			</tr>
+		    <tr>
+			  <td>Delivered Date</td>
+			  <td><%= order.deliverDate %></td>
+			</tr>
+			<tr>
+			  <td>Remarks</td>
+			  <td><%= order.remark %></td>
+			</tr>
+			<tr>
+			  <td>Amount</td>
+			  <td><%= order.amount %></td>
+			</tr>
+			<tr>
+			  <td>Admin</td>
+			  <td><%= order.admin %></td>
+			</tr>
+			<tr>
+			  <td>Payment</td>
+			  <td><%= order.payment %></td>
+			</tr>
+			<tr>
+			  <td>Created Date</td>
+			  <td><%= order.created.toDateString() %></td>
+			</tr>
+		</tbody>
+	</table>
+
+	
+	<div class="ui top attached ">
+		<div class="item ">
+			<a class="ui teal basic button" href="/">Save</a>
+			<a class="ui orange basic button inline" href="/order/<%= order._id %>/edit">Edit</a>
+			<a class="ui red basic button inline" href="/order/<%= order._id %>">Delete</a>
+		</div>
+	</div>
+</div>
+
+<%- include("partials/footer") %>

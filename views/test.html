@@ -1,0 +1,191 @@
+<div class="row" id="formTopDataTable">
+							<div class="form-group">
+								<form class="form-horizontal form-group" id="orderSearchForm">
+									<div class="col-xs-12">
+										<div class="col-md-3">
+											<label>จำนวนแถวที่แสดง</label>
+											<select class="form-control" name="show_row"> 
+												<option value="-1">ทั้งหมด</option> 
+												<option value="5">5</option> 
+												<option value="10" selected="">10</option> 
+												<option value="20">20</option> 
+												<option value="50">50</option> 
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label>ชื่อลูกค้า</label>
+											<input class="form-control" name="customerName" type="text" placeholder="ชื่อ-นามสกุล" >
+										</div>
+										<div class="col-md-3">
+											<label>จังหวัด</label>
+											<select select class="form-control" name="province">
+												  <option value="" selected>--------- เลือกจังหวัด ---------</option>
+												  <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+												  <option value="กระบี่">กระบี่ </option>
+												  <option value="กาญจนบุรี">กาญจนบุรี </option>
+												  <option value="กาฬสินธุ์">กาฬสินธุ์ </option>
+												  <option value="กำแพงเพชร">กำแพงเพชร </option>
+												  <option value="ขอนแก่น">ขอนแก่น</option>
+												  <option value="จันทบุรี">จันทบุรี</option>
+												  <option value="ฉะเชิงเทรา">ฉะเชิงเทรา </option>
+												  <option value="ชัยนาท">ชัยนาท </option>
+												  <option value="ชัยภูมิ">ชัยภูมิ </option>
+												  <option value="ชุมพร">ชุมพร </option>
+												  <option value="ชลบุรี">ชลบุรี </option>
+												  <option value="เชียงใหม่">เชียงใหม่ </option>
+												  <option value="เชียงราย">เชียงราย </option>
+												  <option value="ตรัง">ตรัง </option>
+												  <option value="ตราด">ตราด </option>
+												  <option value="ตาก">ตาก </option>
+												  <option value="นครนายก">นครนายก </option>
+												  <option value="นครปฐม">นครปฐม </option>
+												  <option value="นครพนม">นครพนม </option>
+												  <option value="นครราชสีมา">นครราชสีมา </option>
+												  <option value="นครศรีธรรมราช">นครศรีธรรมราช </option>
+												  <option value="นครสวรรค์">นครสวรรค์ </option>
+												  <option value="นราธิวาส">นราธิวาส </option>
+												  <option value="น่าน">น่าน </option>
+												  <option value="นนทบุรี">นนทบุรี </option>
+												  <option value="บึงกาฬ">บึงกาฬ</option>
+												  <option value="บุรีรัมย์">บุรีรัมย์</option>
+												  <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์ </option>
+												  <option value="ปทุมธานี">ปทุมธานี </option>
+												  <option value="ปราจีนบุรี">ปราจีนบุรี </option>
+												  <option value="ปัตตานี">ปัตตานี </option>
+												  <option value="พะเยา">พะเยา </option>
+												  <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา </option>
+												  <option value="พังงา">พังงา </option>
+												  <option value="พิจิตร">พิจิตร </option>
+												  <option value="พิษณุโลก">พิษณุโลก </option>
+												  <option value="เพชรบุรี">เพชรบุรี </option>
+												  <option value="เพชรบูรณ์">เพชรบูรณ์ </option>
+												  <option value="แพร่">แพร่ </option>
+												  <option value="พัทลุง">พัทลุง </option>
+												  <option value="ภูเก็ต">ภูเก็ต </option>
+												  <option value="มหาสารคาม">มหาสารคาม </option>
+												  <option value="มุกดาหาร">มุกดาหาร </option>
+												  <option value="แม่ฮ่องสอน">แม่ฮ่องสอน </option>
+												  <option value="ยโสธร">ยโสธร </option>
+												  <option value="ยะลา">ยะลา </option>
+												  <option value="ร้อยเอ็ด">ร้อยเอ็ด </option>
+												  <option value="ระนอง">ระนอง </option>
+												  <option value="ระยอง">ระยอง </option>
+												  <option value="ราชบุรี">ราชบุรี</option>
+												  <option value="ลพบุรี">ลพบุรี </option>
+												  <option value="ลำปาง">ลำปาง </option>
+												  <option value="ลำพูน">ลำพูน </option>
+												  <option value="เลย">เลย </option>
+												  <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+												  <option value="สกลนคร">สกลนคร</option>
+												  <option value="สงขลา">สงขลา </option>
+												  <option value="สมุทรสาคร">สมุทรสาคร </option>
+												  <option value="สมุทรปราการ">สมุทรปราการ </option>
+												  <option value="สมุทรสงคราม">สมุทรสงคราม </option>
+												  <option value="สระแก้ว">สระแก้ว </option>
+												  <option value="สระบุรี">สระบุรี </option>
+												  <option value="สิงห์บุรี">สิงห์บุรี </option>
+												  <option value="สุโขทัย">สุโขทัย </option>
+												  <option value="สุพรรณบุรี">สุพรรณบุรี </option>
+												  <option value="สุราษฎร์ธานี">สุราษฎร์ธานี </option>
+												  <option value="สุรินทร์">สุรินทร์ </option>
+												  <option value="สตูล">สตูล </option>
+												  <option value="หนองคาย">หนองคาย </option>
+												  <option value="หนองบัวลำภู">หนองบัวลำภู </option>
+												  <option value="อำนาจเจริญ">อำนาจเจริญ </option>
+												  <option value="อุดรธานี">อุดรธานี </option>
+												  <option value="อุตรดิตถ์">อุตรดิตถ์ </option>
+												  <option value="อุทัยธานี">อุทัยธานี </option>
+												  <option value="อุบลราชธานี">อุบลราชธานี</option>
+												  <option value="อ่างทอง">อ่างทอง </option>
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label>สถานะ</label>
+											<select class="form-control" name="status"> 
+												<option value="" selected>ทั้งหมด</option> 
+												<option value="นำจ่ายไม่สำเร็จ">นำจ่ายไม่สำเร็จ</option> 
+												<option value="นำจ่ายสำเร็จ">นำจ่ายสำเร็จ</option> 
+												<option value="อยู่ระหว่างการขนส่ง">อยู่ระหว่างการขนส่ง</option> 
+												<option value="อยู่ระหว่างการนำจ่าย">อยู่ระหว่างการนำจ่าย</option> 
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="col-md-3">
+											<label>Remark</label>
+											<input class="form-control" name="remark" type="text" placeholder="remark">
+										</div>
+										<div class="col-md-3">
+											<label>วันที่ได้รับสินค้า</label>
+											<div class='input-group date' id='datetimepicker'>
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input type='text' class="form-control pull-right"  name="datetimepicker" autocomplete="off">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<label>Phone Number</label>
+											<input class="form-control" name="phoneNumber" type="text" placeholder="เลขใบสั่งซื้อ">
+										</div>
+										<div class="col-md-3">
+											<label>Tracking Number</label>
+											<input class="form-control" name="trackNumber" type="text" placeholder="เลขใบสั่งซื้อ" 
+											onkeypress=" if (event.keyCode === 13) { $('#segment_now').val(0); Track_po_master(); } ">
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-9">	
+										<!-- Date and time range -->
+										<div class="col-md-4 ">
+											<label>Date range button:</label>
+											<div class="input-group">
+												<button type="button" class="btn btn-default pull-right" id="daterange-btn" name="daterange-btn">
+													<span>
+														<i class="fa fa-calendar"></i> Date range picker
+													</span>
+													<i class="fa fa-caret-down"></i>
+												</button>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<label>ชื่อสินค้า</label>
+											<select class="form-control" name="productName"> 
+												<option value="" selected>ทั้งหมด</option> 
+												<option value="O-mon">โอโมน</option> 
+												<option value="ถั่งเช่า">ถั่งเช่า</option> 
+												<option value="แชมพู">แชมพู</option> 
+											</select>
+										</div>
+										<div class="col-md-4"> 
+											<button class="btn btn-primary center-block formButton">SEARCH</button>
+										</div>
+									</div>
+								</form>
+								<div class="col-xs-12 col-md-3">
+									<button class="btn btn-primary center-block formButton" id="updateOrderBtn">UPDATE</button>
+								</div>
+							</div>
+						</div>
+
+<table id="orderTable" class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr id="searchBar">
+									<th>Search Created Date</th>
+									<th>Search Customer Name</th>
+									<th>Search Product Name</th>
+									<th>Search Track Number</th>
+									<th>Search Status</th>
+									<th>Search Deliver Date</th>
+								</tr>
+								<tr>
+									<th>Created Date</th>
+									<th>Customer Name</th>
+									<th>Product Name</th>
+									<th>Track Number</th>
+									<th>Status</th>
+									<th>Delivered Date</th>
+								</tr>
+							</thead>
+							<tbody id="orderDisplay">
+							</tbody>
+						</table>

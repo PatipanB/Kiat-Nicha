@@ -1,0 +1,111 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+	Customers
+  </h1>
+  <ol class="breadcrumb">
+	<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+	<li><a href="#">Tables</a></li>
+	<li class="active">All Customers</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+	<div class="col-xs-12">
+	  <div class="box">
+		<!-- .box-header -->
+		<div class="box-header">
+		</div>
+		<!-- /.box-header -->
+		<!-- .box-body --> 
+		<div class="box-body">
+		    <div class="dataTables_wrapper">
+			  <div class="row">
+				<div class="form-group">
+					<form class="form-horizontal form-group" id="">
+						<div class="col-xs-12">
+							<div class="col-md-3">
+								<p>จำนวนแถวที่แสดง</p>
+								<select class="form-control" id="customerShowRow"> 
+									<option value="-1">ทั้งหมด</option> 
+									<option value="5">5</option> 
+									<option value="10" selected="">10</option> 
+									<option value="20">20</option> 
+									<option value="50">50</option> 
+								</select>
+							</div>
+							<div class="col-md-3">
+								<p>ชื่อลูกค้า</p>
+								<input class="form-control" type="text" placeholder="ชื่อลูกค้า" id="searchCustomerName">
+							</div>
+							<div class="col-md-3">
+								<p>วันที่ได้รับสินค้า</p>
+								<div class="form-group">
+									<div class='input-group date' id='datetimepicker1'>
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type='text' class="form-control" />
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<p>เบอร์โทรศัพท์</p>
+								<input class="form-control" id="searchCustomerPhone" type="text" placeholder="เบอร์โทรศัพท์">
+							</div>
+						</div>
+					</form>
+				  </div>
+			  </div>
+			  <table id="customerTable" class="table table-bordered table-striped table-hover dataTable" role="grid" area-describedby="example2-info">
+				<thead>
+					<tr>
+					  <th>Name</th>
+					  <th>Address</th>
+					  <th>Phone</th>
+					</tr>
+				</thead>
+				<tbody id="customerTableBody">
+					<!--forEach-->
+					<% customers.forEach(function(customer){ %>
+					<tr>
+						<td class="showCustomers" name="<%= customer.customerName %>"><a href="#"><%= customer.customerName %></a></td>
+						<td class="customersAddress"><%= customer.address %></td>
+						<td><%= customer.phone %></td>
+					</tr>
+					<% }) %>
+				</tbody>
+			  </table>
+			</div>
+		  
+		</div>
+		<!-- /.box-body -->
+	  </div>
+	  <!-- /.box -->
+	</div>
+	<!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
+<!-- <script src="/dist/js/adminlte.min.js"></script> -->
+<!-- DataTables -->
+<!-- <script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script> -->
+<!-- <script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
+
+<script type="text/javascript" src="/assets/customersScript.js"></script>
+<script>
+	// $(function(){
+	// 	$('#example2').DataTable({
+	// 		'paging': true,
+	// 		'lengthChange': false,
+	// 		'searching': false,
+	// 		'ordering': true,
+	// 		'info': true,
+	// 		'autoWidth': false
+	// 	})
+	// })
+</script>
+<!-- <script type="text/javascript" src="/assets/indexScript.js"></script> -->

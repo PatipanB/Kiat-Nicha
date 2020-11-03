@@ -1,0 +1,304 @@
+<%- include("partials/header") %>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+    <section class="content-header">
+		<h1>Data Tables<small>advanced tables</small></h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#">Tables</a></li>
+			<li class="active">Data tables</li>
+		</ol>
+    </section>
+    <!-- Main content -->
+    <section class="content" id="mainContent">
+		<div class="row">
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3>Rank 1</h3>
+						<p><%= topCustomers[0] %> </p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="#" class="small-box-footer showCustomers" name="<%= topCustomers[0] %>">More info <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-gray">
+					<div class="inner">
+						<h3>Rank 2</h3>
+						<p><%= topCustomers[1] %></p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="#" class="small-box-footer showCustomers" name="<%= topCustomers[1] %>">More info <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-red">
+					<div class="inner">
+						<h3>Rank 3</h3>
+						<p><%= topCustomers[2] %></p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="#" class="small-box-footer showCustomers" name="<%= topCustomers[2] %>">More info <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-white">
+					<div class="inner">
+						<h3>Hit</h3>
+						<p>User Registrations</p>
+					</div>
+					<div class="icon">
+						<i class="ion ion-person-add"></i>
+					</div>
+					<a href="#" class="small-box-footer showCustomers">More info <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<input type="submit" id="test3">
+				<!-- <div class="box box-danger">
+					<div class="box-header with-border">
+						<h3 class="box-title">Postman Code</h3>
+					</div>
+					<form class="form-horizontal form-group" action="/" method="POST">
+						<div class="box-body">
+							<input class="form-control" name="code" type="text" placeholder="Thailand Post Track Number" >
+							<p></p>
+							<div class="col-6-md">
+								<button type="submit" class="btn btn-block btn-danger pull-right">Add</button>
+							</div>
+						</div>
+					</form>
+				</div> -->
+			</div>
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Upload Excel</h3>
+					</div>
+					<div class="box-body">
+						<form action="/file-upload" class="dropzone form-horizontal" method="POST" enctype="multipart/form-data">
+							<div class="fallback">
+								<input name='photos' type="file"/>
+							</div> 
+						</form>
+					</div> 
+				</div>  
+			</div> 
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+ 				<div class="box">
+					<!-- .box-header -->
+					<div class="box-header">
+						<h3 class="box-title">Search Orders</h3>
+					</div>
+					<!-- /.box-header -->
+					
+					<!-- .box-body --> 
+					<div class="box-body">
+						<!-- table table-bordered table-hosver -->
+						<div class="row" id="formTopDataTable">
+							<div class="form-group">
+								<form class="form-horizontal form-group" id="orderSearchForm">
+									<div class="col-xs-12">
+										<div class="col-md-3">
+											<label>จำนวนแถวที่แสดง</label>
+											<select class="form-control" id="orderShowRow"> 
+												<option value="-1">ทั้งหมด</option> 
+												<option value="5">5</option> 
+												<option value="10" selected="">10</option> 
+												<option value="20">20</option> 
+												<option value="50">50</option> 
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label>ชื่อลูกค้า</label>
+											<input class="form-control" id="searchCustomerName" type="text" placeholder="ชื่อ-นามสกุล" >
+										</div>
+										<div class="col-md-3">
+											<label>จังหวัด</label>
+											<select select class="form-control" id="searchProvince">
+												<option value="" selected></option>
+												<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+												<option value="กระบี่">กระบี่ </option>
+												<option value="กาญจนบุรี">กาญจนบุรี </option>
+												<option value="กาฬสินธุ์">กาฬสินธุ์ </option>
+												<option value="กำแพงเพชร">กำแพงเพชร </option>
+												<option value="ขอนแก่น">ขอนแก่น</option>
+												<option value="จันทบุรี">จันทบุรี</option>
+												<option value="ฉะเชิงเทรา">ฉะเชิงเทรา </option>
+												<option value="ชัยนาท">ชัยนาท </option>
+												<option value="ชัยภูมิ">ชัยภูมิ </option>
+												<option value="ชุมพร">ชุมพร </option>
+												<option value="ชลบุรี">ชลบุรี </option>
+												<option value="เชียงใหม่">เชียงใหม่ </option>
+												<option value="เชียงราย">เชียงราย </option>
+												<option value="ตรัง">ตรัง </option>
+												<option value="ตราด">ตราด </option>
+												<option value="ตาก">ตาก </option>
+												<option value="นครนายก">นครนายก </option>
+												<option value="นครปฐม">นครปฐม </option>
+												<option value="นครพนม">นครพนม </option>
+												<option value="นครราชสีมา">นครราชสีมา </option>
+												<option value="นครศรีธรรมราช">นครศรีธรรมราช </option>
+												<option value="นครสวรรค์">นครสวรรค์ </option>
+												<option value="นราธิวาส">นราธิวาส </option>
+												<option value="น่าน">น่าน </option>
+												<option value="นนทบุรี">นนทบุรี </option>
+												<option value="บึงกาฬ">บึงกาฬ</option>
+												<option value="บุรีรัมย์">บุรีรัมย์</option>
+												<option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์ </option>
+												<option value="ปทุมธานี">ปทุมธานี </option>
+												<option value="ปราจีนบุรี">ปราจีนบุรี </option>
+												<option value="ปัตตานี">ปัตตานี </option>
+												<option value="พะเยา">พะเยา </option>
+												<option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา </option>
+												<option value="พังงา">พังงา </option>
+												<option value="พิจิตร">พิจิตร </option>
+												<option value="พิษณุโลก">พิษณุโลก </option>
+												<option value="เพชรบุรี">เพชรบุรี </option>
+												<option value="เพชรบูรณ์">เพชรบูรณ์ </option>
+												<option value="แพร่">แพร่ </option>
+												<option value="พัทลุง">พัทลุง </option>
+												<option value="ภูเก็ต">ภูเก็ต </option>
+												<option value="มหาสารคาม">มหาสารคาม </option>
+												<option value="มุกดาหาร">มุกดาหาร </option>
+												<option value="แม่ฮ่องสอน">แม่ฮ่องสอน </option>
+												<option value="ยโสธร">ยโสธร </option>
+												<option value="ยะลา">ยะลา </option>
+												<option value="ร้อยเอ็ด">ร้อยเอ็ด </option>
+												<option value="ระนอง">ระนอง </option>
+												<option value="ระยอง">ระยอง </option>
+												<option value="ราชบุรี">ราชบุรี</option>
+												<option value="ลพบุรี">ลพบุรี </option>
+												<option value="ลำปาง">ลำปาง </option>
+												<option value="ลำพูน">ลำพูน </option>
+												<option value="เลย">เลย </option>
+												<option value="ศรีสะเกษ">ศรีสะเกษ</option>
+												<option value="สกลนคร">สกลนคร</option>
+												<option value="สงขลา">สงขลา </option>
+												<option value="สมุทรสาคร">สมุทรสาคร </option>
+												<option value="สมุทรปราการ">สมุทรปราการ </option>
+												<option value="สมุทรสงคราม">สมุทรสงคราม </option>
+												<option value="สระแก้ว">สระแก้ว </option>
+												<option value="สระบุรี">สระบุรี </option>
+												<option value="สิงห์บุรี">สิงห์บุรี </option>
+												<option value="สุโขทัย">สุโขทัย </option>
+												<option value="สุพรรณบุรี">สุพรรณบุรี </option>
+												<option value="สุราษฎร์ธานี">สุราษฎร์ธานี </option>
+												<option value="สุรินทร์">สุรินทร์ </option>
+												<option value="สตูล">สตูล </option>
+												<option value="หนองคาย">หนองคาย </option>
+												<option value="หนองบัวลำภู">หนองบัวลำภู </option>
+												<option value="อำนาจเจริญ">อำนาจเจริญ </option>
+												<option value="อุดรธานี">อุดรธานี </option>
+												<option value="อุตรดิตถ์">อุตรดิตถ์ </option>
+												<option value="อุทัยธานี">อุทัยธานี </option>
+												<option value="อุบลราชธานี">อุบลราชธานี</option>
+												<option value="อ่างทอง">อ่างทอง </option>
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label>สถานะ</label>
+											<select class="form-control" id="searchStatus"> 
+												<option value="" selected>ทั้งหมด</option> 
+												<option value="นำจ่ายไม่สำเร็จ">นำจ่ายไม่สำเร็จ</option> 
+												<option value="นำจ่ายสำเร็จ">นำจ่ายสำเร็จ</option> 
+												<option value="อยู่ระหว่างการขนส่ง">อยู่ระหว่างการขนส่ง</option> 
+												<option value="อยู่ระหว่างการนำจ่าย">อยู่ระหว่างการนำจ่าย</option> 
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12">
+										<div class="col-md-3">
+											<label>หมายเหตุ</label>
+											<input class="form-control" id="searchRemark" type="text" placeholder="หมายเหตุ">
+										</div>
+										<div class="col-md-3">
+											<label>วันที่ได้รับสินค้า</label>
+											<!-- <div class="datepicker">
+												
+											</div> -->
+											<!-- <div class='input-group date' id='datetimepicker'>
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div> -->
+												<input type='text' class="form-control pull-right" id="searchDeliverDate" data-provide="datepicker" data-date-language="th-th" autocomplete="off">
+											<!-- </div> -->
+										</div>
+										<div class="col-md-3">
+											<label>เบอร์โทรศัพท์</label>
+											<input class="form-control" id="searchPhoneNumber" type="text" placeholder="เบอร์โทรศัพท์">
+										</div>
+										<div class="col-md-3">
+											<label>เลขใบสั่งซื้อ</label>
+											<input class="form-control" id="searchTrackNumber" type="text" placeholder="เลขใบสั่งซื้อ" 
+											onkeypress="">
+										</div>
+									</div>
+									<div class="col-xs-12 col-md-9">	
+										<!-- Date and time range -->
+										<div class="col-md-4 ">
+											<label>Date range button:</label>
+											<div class="input-group">
+												<button type="button" class="btn btn-default pull-right" id="daterange-btn" name="daterange-btn">
+													<span>
+														<i class="fa fa-calendar"></i> Date range picker
+													</span>
+													<i class="fa fa-caret-down"></i>
+												</button>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<label>ชื่อสินค้า</label>
+											<select class="form-control" id="searchProductName"> 
+												<option value="" selected>ทั้งหมด</option> 
+											</select>
+										</div>
+										<div class="col-md-4"> 
+											<input class="btn btn-primary center-block formButton" type="reset" value="Reset(not working)"/>
+										</div>
+									</div>
+								</form>
+								<div class="col-xs-12 col-md-3">
+									<button class="btn btn-primary center-block formButton" id="updateOrderBtn">UPDATE</button>
+								</div>
+							</div> 
+						</div>
+						<table id="orderTable" class="table table-bordered table-striped table-hover" class="display" style="width:100%">
+							<thead>
+								<tr>
+									<th></th>
+									<th>วันที่ได้รับออเดอร์</th>
+									<th>ชื่อลูกค้า</th>
+									<th>ชื่อสินค้า</th>
+									<th>เลขใบสั่งซื้อ</th>
+									<th>สถานะ</th>
+									<th>วันที่ลูกค้าได้รับของ</th>
+								</tr>
+							</thead>
+							<tbody id="orderDisplay">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- /.content -->
+</div>
+<%- include("partials/footer") %>
